@@ -1,0 +1,54 @@
+---
+- name: PostgreSQL
+  ansible.builtin.apt:
+    name: [postgresql, postgresql-contrib]
+    state: present
+
+- name: Usuario lab
+  ansible.builtin.shell: |
+    sudo -u postgres psql -tc "SELECT 1 FROM pg_roles WHERE rolname='{{ db_user }}'" | grep -q 1 || \
+    sudo -u postgres psql -c "CREATE USER {{ db_user }} WITH PASSWORD '{{ db_pass }}';"
+  args: { executable: /bin/bash }
+  changed_when: false
+
+- name: Base de datos reservas
+  ansible.builtin.shell: |
+    sudo -u postgres psql -tc "SELECT 1 FROM pg_database WHERE datname='{{ db_name }}'" | grep -q 1 || \
+    sudo -u postgres psql -c "CREATE DATABASE {{ db_name }} OWNER {{ db_user }};"
+  args: { executable: /bin/bash }
+  changed_when: false
+
+- name: Escuchar en red del lab
+  ansible.builtin.shell: |
+    PGVER=$(ls /etc/postgresql/)
+    CONF=/etc/postgresql/$PGVER/main/postgresql.conf
+    HBA=/etc/postgresql/$PGVER/main/pg_hba.conf
+    sed -i "s/^#*listen_addresses.*/listen_addresses = '*'/" "$CONF"
+    grep -q "10.10.0.0/24" "$HBA" || echo "host all all 10.10.0.0/24 scram-sha-256" >> "$HBA"
+  notify: Restart postgresql
+
+- name: Schema SQL
+  ansible.builtin.copy:
+    src: "{{ lab_root }}/app/schema.sql"
+    dest: /var/tmp/schema.sql
+    mode: "0644"
+
+- name: Aplicar schema
+  ansible.builtin.shell: sudo -u postgres psql -d {{ db_name }} -f /var/tmp/schema.sql
+  args: { executable: /bin/bash }
+  changed_when: true
+
+- name: Permisos y admin demo
+  ansible.builtin.shell: |
+    sudo -u postgres psql -d {{ db_name }} -c "
+      GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO {{ db_user }};
+      GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO {{ db_user }};
+      ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO {{ db_user }};
+      UPDATE users SET password_hash='plain:lab123' WHERE email='admin@lab.edu';"
+  args: { executable: /bin/bash }
+
+- name: PostgreSQL activo
+  ansible.builtin.service:
+    name: postgresql
+    state: started
+    enabled: true

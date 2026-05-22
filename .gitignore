@@ -1,0 +1,23 @@
+# Secretos y estado local
+.env
+*.env.local
+**/terraform.tfstate
+**/terraform.tfstate.backup
+.tofu/
+.terraform/
+
+# Generado (contiene IPs/contraseñas de inventario)
+generated/inventory.ini
+
+# Python
+__pycache__/
+.venv/
+*.pyc
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Logs
+*.log

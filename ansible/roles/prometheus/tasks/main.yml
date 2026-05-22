@@ -1,0 +1,36 @@
+---
+- name: Prometheus
+  ansible.builtin.apt:
+    name: prometheus
+    state: present
+
+- name: Reglas de alerta
+  ansible.builtin.template:
+    src: alerts-lab.yml.j2
+    dest: /etc/prometheus/alerts-lab.yml
+    mode: "0644"
+    owner: prometheus
+    group: prometheus
+  notify: Restart prometheus
+
+- name: Config scrape
+  ansible.builtin.template:
+    src: prometheus.yml.j2
+    dest: /etc/prometheus/prometheus.yml
+    mode: "0644"
+    owner: prometheus
+    group: prometheus
+  notify: Restart prometheus
+
+- name: Prometheus activo
+  ansible.builtin.service:
+    name: prometheus
+    state: started
+    enabled: true
+
+- name: Esperar Prometheus
+  ansible.builtin.uri:
+    url: "http://127.0.0.1:{{ prometheus_port }}/-/ready"
+    status_code: 200
+  retries: 12
+  delay: 3

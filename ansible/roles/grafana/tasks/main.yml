@@ -1,0 +1,62 @@
+---
+- name: Dependencias Grafana
+  ansible.builtin.apt:
+    name: [curl, gpg]
+    state: present
+
+- name: Repositorio Grafana
+  ansible.builtin.shell: |
+    if ! command -v grafana-server &>/dev/null; then
+      curl -fsSL https://apt.grafana.com/gpg.key | gpg --dearmor -o /usr/share/keyrings/grafana.gpg
+      echo "deb [signed-by=/usr/share/keyrings/grafana.gpg] https://apt.grafana.com stable main" > /etc/apt/sources.list.d/grafana.list
+      apt-get update -qq
+      apt-get install -y -qq grafana
+    fi
+  args: { executable: /bin/bash }
+
+- name: Eliminar datasource duplicado legacy
+  ansible.builtin.file:
+    path: /etc/grafana/provisioning/datasources/lab.yaml
+    state: absent
+
+- name: Directorios provisioning
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - /etc/grafana/provisioning/dashboards
+    - /etc/grafana/provisioning/datasources
+
+- name: Datasource Prometheus
+  ansible.builtin.template:
+    src: prometheus-datasource.yml.j2
+    dest: /etc/grafana/provisioning/datasources/lab-prometheus.yaml
+    mode: "0644"
+  notify: Restart grafana
+
+- name: Provisioning dashboards
+  ansible.builtin.copy:
+    src: lab-dashboard.json
+    dest: /etc/grafana/provisioning/dashboards/lab-reservas.json
+    mode: "0644"
+  notify: Restart grafana
+
+- name: Dashboard provider
+  ansible.builtin.copy:
+    dest: /etc/grafana/provisioning/dashboards/provider.yaml
+    mode: "0644"
+    content: |
+      apiVersion: 1
+      providers:
+        - name: lab
+          type: file
+          options:
+            path: /etc/grafana/provisioning/dashboards
+  notify: Restart grafana
+
+- name: Grafana activo
+  ansible.builtin.service:
+    name: grafana-server
+    state: started
+    enabled: true

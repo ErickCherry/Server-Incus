@@ -1,0 +1,21 @@
+groups:
+  - name: lab_reservas
+    rules:
+      - alert: ApiDown
+        expr: up{job="reservas",instance="10.10.0.20:8080"} == 0
+        for: 1m
+        labels: { severity: critical }
+        annotations:
+          summary: API reservas no responde
+      - alert: CoreDown
+        expr: up{job="reservas",instance="10.10.0.30:8080"} == 0
+        for: 1m
+        labels: { severity: warning }
+        annotations:
+          summary: Core reservas no responde
+      - alert: HighNodeCPU
+        expr: 100 - (avg by(instance)(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 85
+        for: 5m
+        labels: { severity: warning }
+        annotations:
+          summary: CPU alta en {% raw %}{{ $labels.instance }}{% endraw %}

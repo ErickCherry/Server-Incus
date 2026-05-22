@@ -1,0 +1,25 @@
+---
+- name: Directorio almacenamiento demo
+  ansible.builtin.file:
+    path: /var/lib/ceph-demo
+    state: directory
+    mode: "0755"
+
+- name: Marcador de volumen persistente
+  ansible.builtin.copy:
+    dest: /var/lib/ceph-demo/volume-demo.txt
+    mode: "0644"
+    content: |
+      ceph-demo node={{ inventory_hostname }}
+      pool=default volume=ceph-data
+      descripcion=Capa de almacenamiento simplificada (ZFS Incus) — sustituto didáctico de Ceph
+
+- name: Script de estado almacenamiento
+  ansible.builtin.copy:
+    dest: /opt/lab/ceph-status.sh
+    mode: "0755"
+    content: |
+      #!/bin/bash
+      echo "=== Ceph demo (ZFS/Incus) ==="
+      df -h /var/lib/ceph-demo 2>/dev/null || ls -la /var/lib/ceph-demo
+      cat /var/lib/ceph-demo/volume-demo.txt 2>/dev/null

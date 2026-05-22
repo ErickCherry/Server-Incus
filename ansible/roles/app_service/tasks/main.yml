@@ -1,0 +1,79 @@
+---
+- name: Paquetes Python
+  ansible.builtin.apt:
+    name: [python3-venv, python3-pip, curl]
+    state: present
+
+- name: Directorio aplicación
+  ansible.builtin.file:
+    path: /opt/lab/reservas
+    state: directory
+    mode: "0755"
+
+- name: Copiar requirements
+  ansible.builtin.copy:
+    src: "{{ lab_root }}/app/requirements.txt"
+    dest: /opt/lab/reservas/requirements.txt
+    mode: "0644"
+
+- name: Venv e instalar dependencias API
+  ansible.builtin.shell: |
+    test -d /opt/lab/venv || python3 -m venv /opt/lab/venv
+    /opt/lab/venv/bin/pip install -q -r /opt/lab/reservas/requirements.txt
+  args: { creates: /opt/lab/venv/bin/uvicorn }
+  when: reservas_service == "api"
+
+- name: Copiar main.py (API)
+  ansible.builtin.copy:
+    src: "{{ lab_root }}/app/main.py"
+    dest: /opt/lab/reservas/main.py
+    mode: "0644"
+  notify: Restart reservas api
+  when: reservas_service == "api"
+
+- name: Venv dependencias Core
+  ansible.builtin.shell: |
+    test -d /opt/lab/venv || python3 -m venv /opt/lab/venv
+    /opt/lab/venv/bin/pip install -q fastapi uvicorn httpx
+  args: { creates: /opt/lab/venv/bin/uvicorn }
+  when: reservas_service == "core"
+
+- name: Copiar core_main.py
+  ansible.builtin.copy:
+    src: "{{ lab_root }}/app/core_main.py"
+    dest: /opt/lab/reservas/core_main.py
+    mode: "0644"
+  notify: Restart reservas core
+  when: reservas_service == "core"
+
+- name: Systemd API
+  ansible.builtin.template:
+    src: reservas-api.service.j2
+    dest: /etc/systemd/system/reservas-api.service
+    mode: "0644"
+  notify: Restart reservas api
+  when: reservas_service == "api"
+
+- name: Systemd Core
+  ansible.builtin.template:
+    src: reservas-core.service.j2
+    dest: /etc/systemd/system/reservas-core.service
+    mode: "0644"
+  notify: Restart reservas core
+  when: reservas_service == "core"
+
+- name: Habilitar API
+  ansible.builtin.systemd:
+    name: reservas-api
+    enabled: true
+    state: started
+    daemon_reload: true
+  when: reservas_service == "api"
+
+- name: Habilitar Core
+  ansible.builtin.systemd:
+    name: reservas-core
+    enabled: true
+    state: started
+    daemon_reload: true
+  when: reservas_service == "core"

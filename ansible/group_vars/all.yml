@@ -1,0 +1,26 @@
+---
+lab_root: /home/fintek-1/incus-lab
+lab_gateway: "10.10.0.1"
+lab_subnet: "10.10.0.0/24"
+db_host: "10.10.0.40"
+db_name: reservas
+db_user: lab
+db_pass: "lab_secret_change_me"
+prometheus_port: 9090
+grafana_port: 3000
+node_exporter_port: 9100
+app_service_port: 8080
+host_lan_ip: "192.168.1.129"
+
+prometheus_scrape_targets:
+  - job_name: node
+    targets:
+      - "10.10.0.20:9100"
+      - "10.10.0.30:9100"
+      - "10.10.0.40:9100"
+      - "10.10.0.50:9100"
+  - job_name: reservas
+    targets:
+      - "10.10.0.20:8080"
+      - "10.10.0.30:8080"
+    metrics_path: /metrics

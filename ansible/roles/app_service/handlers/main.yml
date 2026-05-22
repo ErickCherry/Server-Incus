@@ -1,0 +1,12 @@
+---
+- name: Restart reservas api
+  ansible.builtin.systemd:
+    name: reservas-api
+    state: restarted
+    daemon_reload: true
+
+- name: Restart reservas core
+  ansible.builtin.systemd:
+    name: reservas-core
+    state: restarted
+    daemon_reload: true

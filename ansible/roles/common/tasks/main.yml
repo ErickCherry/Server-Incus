@@ -1,0 +1,41 @@
+---
+- name: Actualizar paquetes base
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Paquetes comunes del laboratorio
+  ansible.builtin.apt:
+    name:
+      - curl
+      - vim
+      - net-tools
+      - python3
+      - python3-pip
+      - sudo
+      - openssh-server
+      - prometheus-node-exporter
+    state: present
+
+- name: Servicio node_exporter activo
+  ansible.builtin.service:
+    name: prometheus-node-exporter
+    state: started
+    enabled: true
+
+- name: Directorio de datos del lab
+  ansible.builtin.file:
+    path: /opt/lab
+    state: directory
+    mode: "0755"
+
+- name: Marca de nodo desplegado por Ansible
+  ansible.builtin.copy:
+    dest: /opt/lab/node-info.json
+    mode: "0644"
+    content: |
+      {
+        "hostname": "{{ inventory_hostname }}",
+        "role": "{{ lab_role | default('unknown') }}",
+        "lab_ip": "{{ lab_ip | default(ansible_default_ipv4.address) }}"
+      }

@@ -1,0 +1,4 @@
+config:
+  cluster.https_address: 192.168.1.131:8443
+  core.https_address: 192.168.1.131:8443
+  network.ovn.northbound_connection: unix:/var/run/ovn/ovnnb_db.sock

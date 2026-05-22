@@ -1,0 +1,44 @@
+---
+- name: Health API
+  ansible.builtin.uri:
+    url: "http://10.10.0.20:8080/health"
+    status_code: 200
+
+- name: Health Core
+  ansible.builtin.uri:
+    url: "http://10.10.0.30:8080/health"
+    status_code: 200
+
+- name: Login demo
+  ansible.builtin.uri:
+    url: "http://10.10.0.20:8080/auth/login"
+    method: POST
+    body_format: json
+    body: { email: "admin@lab.edu", password: "lab123" }
+    status_code: 200
+
+- name: Prometheus ready
+  ansible.builtin.uri:
+    url: "http://10.10.0.50:9090/-/ready"
+    status_code: 200
+
+- name: Grafana login page
+  ansible.builtin.uri:
+    url: "http://10.10.0.50:3000/login"
+    status_code: 200
+
+- name: OVN red existe
+  ansible.builtin.command: incus network show lab-ovn
+  register: ovn_net
+  changed_when: false
+  failed_when: ovn_net.rc != 0
+
+- name: Ceph demo volume
+  ansible.builtin.command: incus exec ceph-node -- test -f /var/lib/ceph-demo/volume-demo.txt
+  changed_when: false
+
+- name: Resumen
+  ansible.builtin.debug:
+    msg: |
+      Lab OK — API http://10.10.0.20:8080/docs | Grafana http://10.10.0.50:3000 | Prometheus http://10.10.0.50:9090
+      Incus UI: https://{{ host_lan_ip }}:8443

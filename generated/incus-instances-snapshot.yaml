@@ -1,0 +1,900 @@
+- architecture: x86_64
+  config:
+    image.architecture: amd64
+    image.description: Ubuntu noble amd64 (20260521_07:42)
+    image.os: Ubuntu
+    image.release: noble
+    image.requirements.cgroup: v2
+    image.serial: "20260521_07:42"
+    image.type: squashfs
+    image.variant: cloud
+    limits.cpu: "2"
+    limits.memory: 2GiB
+    volatile.base_image: 3874d2042c624746407c6e8f2c3f1d2e1189a4f4658f9799ec6903d3a69468f6
+    volatile.cloud-init.instance-id: 199e3c80-e545-466f-ba21-7f144e55629a
+    volatile.eth0.host_name: veth3f3fe770
+    volatile.eth0.hwaddr: 10:66:6a:f8:c1:a6
+    volatile.idmap.base: "0"
+    volatile.idmap.current: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.idmap.next: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.last_state.idmap: '[]'
+    volatile.last_state.power: RUNNING
+    volatile.uuid: 80468832-5cfa-46eb-9a13-4ae1e1353212
+    volatile.uuid.generation: 80468832-5cfa-46eb-9a13-4ae1e1353212
+  devices:
+    eth0:
+      ipv4.address: 10.10.0.20
+      name: eth0
+      network: lab-br0
+      type: nic
+  ephemeral: false
+  profiles:
+    - lab
+  stateful: false
+  description: ""
+  created_at: 2026-05-21T20:42:39.195521018Z
+  expanded_config:
+    image.architecture: amd64
+    image.description: Ubuntu noble amd64 (20260521_07:42)
+    image.os: Ubuntu
+    image.release: noble
+    image.requirements.cgroup: v2
+    image.serial: "20260521_07:42"
+    image.type: squashfs
+    image.variant: cloud
+    limits.cpu: "2"
+    limits.memory: 2GiB
+    volatile.base_image: 3874d2042c624746407c6e8f2c3f1d2e1189a4f4658f9799ec6903d3a69468f6
+    volatile.cloud-init.instance-id: 199e3c80-e545-466f-ba21-7f144e55629a
+    volatile.eth0.host_name: veth3f3fe770
+    volatile.eth0.hwaddr: 10:66:6a:f8:c1:a6
+    volatile.idmap.base: "0"
+    volatile.idmap.current: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.idmap.next: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.last_state.idmap: '[]'
+    volatile.last_state.power: RUNNING
+    volatile.uuid: 80468832-5cfa-46eb-9a13-4ae1e1353212
+    volatile.uuid.generation: 80468832-5cfa-46eb-9a13-4ae1e1353212
+  expanded_devices:
+    eth0:
+      ipv4.address: 10.10.0.20
+      name: eth0
+      network: lab-br0
+      type: nic
+    root:
+      path: /
+      pool: default
+      size: 4GiB
+      type: disk
+  name: app-api
+  status: Running
+  status_code: 103
+  last_used_at: 2026-05-21T20:46:32.626646328Z
+  location: none
+  type: container
+  project: default
+  backups: []
+  state:
+    status: Running
+    status_code: 103
+    disk:
+      root:
+        usage: 449768448
+        total: 4294967296
+    memory:
+      usage: 197275648
+      usage_peak: 0
+      total: 2147483648
+      swap_usage: 0
+      swap_usage_peak: 0
+    network:
+      eth0:
+        addresses:
+          - family: inet
+            address: 10.10.0.20
+            netmask: "24"
+            scope: global
+          - family: inet6
+            address: fd42:fe56:6aac:127f:1266:6aff:fef8:c1a6
+            netmask: "64"
+            scope: global
+          - family: inet6
+            address: fe80::1266:6aff:fef8:c1a6
+            netmask: "64"
+            scope: link
+        counters:
+          bytes_received: 133257687
+          bytes_sent: 2594204
+          packets_received: 76552
+          packets_sent: 36792
+          errors_received: 0
+          errors_sent: 0
+          packets_dropped_outbound: 0
+          packets_dropped_inbound: 0
+        hwaddr: 10:66:6a:f8:c1:a6
+        host_name: veth3f3fe770
+        mtu: 1500
+        state: up
+        type: broadcast
+      lo:
+        addresses:
+          - family: inet
+            address: 127.0.0.1
+            netmask: "8"
+            scope: local
+          - family: inet6
+            address: ::1
+            netmask: "128"
+            scope: local
+        counters:
+          bytes_received: 36882
+          bytes_sent: 36882
+          packets_received: 478
+          packets_sent: 478
+          errors_received: 0
+          errors_sent: 0
+          packets_dropped_outbound: 0
+          packets_dropped_inbound: 0
+        hwaddr: ""
+        host_name: ""
+        mtu: 65536
+        state: up
+        type: loopback
+    pid: 29760
+    processes: 28
+    cpu:
+      usage: 44426840000
+      allocated_time: 2000000000
+    started_at: 2026-05-21T20:46:32.640062496Z
+    os_info: null
+  snapshots: []
+- architecture: x86_64
+  config:
+    image.architecture: amd64
+    image.description: Ubuntu noble amd64 (20260521_07:42)
+    image.os: Ubuntu
+    image.release: noble
+    image.requirements.cgroup: v2
+    image.serial: "20260521_07:42"
+    image.type: squashfs
+    image.variant: cloud
+    limits.cpu: "2"
+    limits.memory: 2GiB
+    volatile.base_image: 3874d2042c624746407c6e8f2c3f1d2e1189a4f4658f9799ec6903d3a69468f6
+    volatile.cloud-init.instance-id: 740f0f92-acfb-4a31-bb49-3d2a7c571724
+    volatile.eth0.host_name: vethababf080
+    volatile.eth0.hwaddr: 10:66:6a:16:0a:a9
+    volatile.idmap.base: "0"
+    volatile.idmap.current: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.idmap.next: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.last_state.idmap: '[]'
+    volatile.last_state.power: RUNNING
+    volatile.uuid: 482fd78d-ed6a-4841-af9a-85c621867387
+    volatile.uuid.generation: 482fd78d-ed6a-4841-af9a-85c621867387
+  devices:
+    eth0:
+      ipv4.address: 10.10.0.30
+      name: eth0
+      network: lab-br0
+      type: nic
+  ephemeral: false
+  profiles:
+    - lab
+  stateful: false
+  description: ""
+  created_at: 2026-05-21T20:42:39.565694574Z
+  expanded_config:
+    image.architecture: amd64
+    image.description: Ubuntu noble amd64 (20260521_07:42)
+    image.os: Ubuntu
+    image.release: noble
+    image.requirements.cgroup: v2
+    image.serial: "20260521_07:42"
+    image.type: squashfs
+    image.variant: cloud
+    limits.cpu: "2"
+    limits.memory: 2GiB
+    volatile.base_image: 3874d2042c624746407c6e8f2c3f1d2e1189a4f4658f9799ec6903d3a69468f6
+    volatile.cloud-init.instance-id: 740f0f92-acfb-4a31-bb49-3d2a7c571724
+    volatile.eth0.host_name: vethababf080
+    volatile.eth0.hwaddr: 10:66:6a:16:0a:a9
+    volatile.idmap.base: "0"
+    volatile.idmap.current: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.idmap.next: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.last_state.idmap: '[]'
+    volatile.last_state.power: RUNNING
+    volatile.uuid: 482fd78d-ed6a-4841-af9a-85c621867387
+    volatile.uuid.generation: 482fd78d-ed6a-4841-af9a-85c621867387
+  expanded_devices:
+    eth0:
+      ipv4.address: 10.10.0.30
+      name: eth0
+      network: lab-br0
+      type: nic
+    root:
+      path: /
+      pool: default
+      size: 4GiB
+      type: disk
+  name: app-core
+  status: Running
+  status_code: 103
+  last_used_at: 2026-05-21T20:46:32.666920396Z
+  location: none
+  type: container
+  project: default
+  backups: []
+  state:
+    status: Running
+    status_code: 103
+    disk:
+      root:
+        usage: 402895360
+        total: 4294967296
+    memory:
+      usage: 157171712
+      usage_peak: 0
+      total: 2147483648
+      swap_usage: 0
+      swap_usage_peak: 0
+    network:
+      eth0:
+        addresses:
+          - family: inet
+            address: 10.10.0.30
+            netmask: "24"
+            scope: global
+          - family: inet6
+            address: fd42:fe56:6aac:127f:1266:6aff:fe16:aa9
+            netmask: "64"
+            scope: global
+          - family: inet6
+            address: fe80::1266:6aff:fe16:aa9
+            netmask: "64"
+            scope: link
+        counters:
+          bytes_received: 117099600
+          bytes_sent: 2365301
+          packets_received: 68299
+          packets_sent: 34279
+          errors_received: 0
+          errors_sent: 0
+          packets_dropped_outbound: 0
+          packets_dropped_inbound: 0
+        hwaddr: 10:66:6a:16:0a:a9
+        host_name: vethababf080
+        mtu: 1500
+        state: up
+        type: broadcast
+      lo:
+        addresses:
+          - family: inet
+            address: 127.0.0.1
+            netmask: "8"
+            scope: local
+          - family: inet6
+            address: ::1
+            netmask: "128"
+            scope: local
+        counters:
+          bytes_received: 45560
+          bytes_sent: 45560
+          packets_received: 550
+          packets_sent: 550
+          errors_received: 0
+          errors_sent: 0
+          packets_dropped_outbound: 0
+          packets_dropped_inbound: 0
+        hwaddr: ""
+        host_name: ""
+        mtu: 65536
+        state: up
+        type: loopback
+    pid: 29781
+    processes: 22
+    cpu:
+      usage: 32717065000
+      allocated_time: 2000000000
+    started_at: 2026-05-21T20:46:32.678061687Z
+    os_info: null
+  snapshots: []
+- architecture: x86_64
+  config:
+    image.architecture: amd64
+    image.description: Ubuntu noble amd64 (20260521_07:42)
+    image.os: Ubuntu
+    image.release: noble
+    image.requirements.cgroup: v2
+    image.serial: "20260521_07:42"
+    image.type: squashfs
+    image.variant: cloud
+    limits.cpu: "2"
+    limits.memory: 2GiB
+    volatile.base_image: 3874d2042c624746407c6e8f2c3f1d2e1189a4f4658f9799ec6903d3a69468f6
+    volatile.cloud-init.instance-id: d4980a2c-f0a6-446a-b806-ea71e4ce3d97
+    volatile.eth0.host_name: vethe12213fb
+    volatile.eth0.hwaddr: 10:66:6a:aa:9e:83
+    volatile.idmap.base: "0"
+    volatile.idmap.current: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.idmap.next: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.last_state.idmap: '[]'
+    volatile.last_state.power: RUNNING
+    volatile.uuid: 49c98afc-006e-4383-bb5b-4a1f37130028
+    volatile.uuid.generation: 49c98afc-006e-4383-bb5b-4a1f37130028
+  devices:
+    eth0:
+      ipv4.address: 10.10.0.60
+      name: eth0
+      network: lab-br0
+      type: nic
+  ephemeral: false
+  profiles:
+    - lab
+  stateful: false
+  description: ""
+  created_at: 2026-05-21T20:42:40.324567414Z
+  expanded_config:
+    image.architecture: amd64
+    image.description: Ubuntu noble amd64 (20260521_07:42)
+    image.os: Ubuntu
+    image.release: noble
+    image.requirements.cgroup: v2
+    image.serial: "20260521_07:42"
+    image.type: squashfs
+    image.variant: cloud
+    limits.cpu: "2"
+    limits.memory: 2GiB
+    volatile.base_image: 3874d2042c624746407c6e8f2c3f1d2e1189a4f4658f9799ec6903d3a69468f6
+    volatile.cloud-init.instance-id: d4980a2c-f0a6-446a-b806-ea71e4ce3d97
+    volatile.eth0.host_name: vethe12213fb
+    volatile.eth0.hwaddr: 10:66:6a:aa:9e:83
+    volatile.idmap.base: "0"
+    volatile.idmap.current: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.idmap.next: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.last_state.idmap: '[]'
+    volatile.last_state.power: RUNNING
+    volatile.uuid: 49c98afc-006e-4383-bb5b-4a1f37130028
+    volatile.uuid.generation: 49c98afc-006e-4383-bb5b-4a1f37130028
+  expanded_devices:
+    eth0:
+      ipv4.address: 10.10.0.60
+      name: eth0
+      network: lab-br0
+      type: nic
+    root:
+      path: /
+      pool: default
+      size: 4GiB
+      type: disk
+  name: ceph-node
+  status: Running
+  status_code: 103
+  last_used_at: 2026-05-21T20:52:40.367590925Z
+  location: none
+  type: container
+  project: default
+  backups: []
+  state:
+    status: Running
+    status_code: 103
+    disk:
+      root:
+        usage: 76625920
+        total: 4294967296
+    memory:
+      usage: 129073152
+      usage_peak: 0
+      total: 2147483648
+      swap_usage: 0
+      swap_usage_peak: 0
+    network:
+      eth0:
+        addresses:
+          - family: inet
+            address: 10.10.0.60
+            netmask: "24"
+            scope: global
+          - family: inet6
+            address: fd42:fe56:6aac:127f:1266:6aff:feaa:9e83
+            netmask: "64"
+            scope: global
+          - family: inet6
+            address: fe80::1266:6aff:feaa:9e83
+            netmask: "64"
+            scope: link
+        counters:
+          bytes_received: 239889
+          bytes_sent: 128274
+          packets_received: 1191
+          packets_sent: 1212
+          errors_received: 0
+          errors_sent: 0
+          packets_dropped_outbound: 0
+          packets_dropped_inbound: 0
+        hwaddr: 10:66:6a:aa:9e:83
+        host_name: vethe12213fb
+        mtu: 1500
+        state: up
+        type: broadcast
+      lo:
+        addresses:
+          - family: inet
+            address: 127.0.0.1
+            netmask: "8"
+            scope: local
+          - family: inet6
+            address: ::1
+            netmask: "128"
+            scope: local
+        counters:
+          bytes_received: 36882
+          bytes_sent: 36882
+          packets_received: 478
+          packets_sent: 478
+          errors_received: 0
+          errors_sent: 0
+          packets_dropped_outbound: 0
+          packets_dropped_inbound: 0
+        hwaddr: ""
+        host_name: ""
+        mtu: 65536
+        state: up
+        type: loopback
+    pid: 34551
+    processes: 14
+    cpu:
+      usage: 9063080000
+      allocated_time: 2000000000
+    started_at: 2026-05-21T20:52:40.38295028Z
+    os_info: null
+  snapshots: []
+- architecture: x86_64
+  config:
+    image.architecture: amd64
+    image.description: Ubuntu noble amd64 (20260521_07:42)
+    image.os: Ubuntu
+    image.release: noble
+    image.requirements.cgroup: v2
+    image.serial: "20260521_07:42"
+    image.type: squashfs
+    image.variant: cloud
+    limits.cpu: "2"
+    limits.memory: 2GiB
+    volatile.base_image: 3874d2042c624746407c6e8f2c3f1d2e1189a4f4658f9799ec6903d3a69468f6
+    volatile.cloud-init.instance-id: b2b4c036-f6bd-4034-ab05-e464ede0e8e5
+    volatile.eth0.host_name: vethaefaba4d
+    volatile.eth0.hwaddr: 10:66:6a:f9:8a:fa
+    volatile.idmap.base: "0"
+    volatile.idmap.current: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.idmap.next: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.last_state.idmap: '[]'
+    volatile.last_state.power: RUNNING
+    volatile.uuid: 56a0c9ea-1dac-4073-8a5d-86e42daa6e7a
+    volatile.uuid.generation: 56a0c9ea-1dac-4073-8a5d-86e42daa6e7a
+  devices:
+    eth0:
+      ipv4.address: 10.10.0.40
+      name: eth0
+      network: lab-br0
+      type: nic
+  ephemeral: false
+  profiles:
+    - lab
+  stateful: false
+  description: ""
+  created_at: 2026-05-21T20:42:39.841514248Z
+  expanded_config:
+    image.architecture: amd64
+    image.description: Ubuntu noble amd64 (20260521_07:42)
+    image.os: Ubuntu
+    image.release: noble
+    image.requirements.cgroup: v2
+    image.serial: "20260521_07:42"
+    image.type: squashfs
+    image.variant: cloud
+    limits.cpu: "2"
+    limits.memory: 2GiB
+    volatile.base_image: 3874d2042c624746407c6e8f2c3f1d2e1189a4f4658f9799ec6903d3a69468f6
+    volatile.cloud-init.instance-id: b2b4c036-f6bd-4034-ab05-e464ede0e8e5
+    volatile.eth0.host_name: vethaefaba4d
+    volatile.eth0.hwaddr: 10:66:6a:f9:8a:fa
+    volatile.idmap.base: "0"
+    volatile.idmap.current: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.idmap.next: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.last_state.idmap: '[]'
+    volatile.last_state.power: RUNNING
+    volatile.uuid: 56a0c9ea-1dac-4073-8a5d-86e42daa6e7a
+    volatile.uuid.generation: 56a0c9ea-1dac-4073-8a5d-86e42daa6e7a
+  expanded_devices:
+    eth0:
+      ipv4.address: 10.10.0.40
+      name: eth0
+      network: lab-br0
+      type: nic
+    root:
+      path: /
+      pool: default
+      size: 4GiB
+      type: disk
+  name: db-postgres
+  status: Running
+  status_code: 103
+  last_used_at: 2026-05-21T20:52:40.377984312Z
+  location: none
+  type: container
+  project: default
+  backups: []
+  state:
+    status: Running
+    status_code: 103
+    disk:
+      root:
+        usage: 280729600
+        total: 4294967296
+    memory:
+      usage: 191582208
+      usage_peak: 0
+      total: 2147483648
+      swap_usage: 0
+      swap_usage_peak: 0
+    network:
+      eth0:
+        addresses:
+          - family: inet
+            address: 10.10.0.40
+            netmask: "24"
+            scope: global
+          - family: inet6
+            address: fd42:fe56:6aac:127f:1266:6aff:fef9:8afa
+            netmask: "64"
+            scope: global
+          - family: inet6
+            address: fe80::1266:6aff:fef9:8afa
+            netmask: "64"
+            scope: link
+        counters:
+          bytes_received: 67740448
+          bytes_sent: 1448760
+          packets_received: 43862
+          packets_sent: 20756
+          errors_received: 0
+          errors_sent: 0
+          packets_dropped_outbound: 0
+          packets_dropped_inbound: 0
+        hwaddr: 10:66:6a:f9:8a:fa
+        host_name: vethaefaba4d
+        mtu: 1500
+        state: up
+        type: broadcast
+      lo:
+        addresses:
+          - family: inet
+            address: 127.0.0.1
+            netmask: "8"
+            scope: local
+          - family: inet6
+            address: ::1
+            netmask: "128"
+            scope: local
+        counters:
+          bytes_received: 48870
+          bytes_sent: 48870
+          packets_received: 577
+          packets_sent: 577
+          errors_received: 0
+          errors_sent: 0
+          packets_dropped_outbound: 0
+          packets_dropped_inbound: 0
+        hwaddr: ""
+        host_name: ""
+        mtu: 65536
+        state: up
+        type: loopback
+    pid: 34552
+    processes: 28
+    cpu:
+      usage: 35322003000
+      allocated_time: 2000000000
+    started_at: 2026-05-21T20:52:40.38295028Z
+    os_info: null
+  snapshots: []
+- architecture: x86_64
+  config:
+    image.architecture: amd64
+    image.description: Ubuntu noble amd64 (20260521_07:42)
+    image.os: Ubuntu
+    image.release: noble
+    image.requirements.cgroup: v2
+    image.serial: "20260521_07:42"
+    image.type: squashfs
+    image.variant: cloud
+    limits.cpu: "2"
+    limits.memory: 2GiB
+    volatile.base_image: 3874d2042c624746407c6e8f2c3f1d2e1189a4f4658f9799ec6903d3a69468f6
+    volatile.cloud-init.instance-id: da02c520-4692-456c-9d1b-aca268c0e6aa
+    volatile.eth0.host_name: veth11b4a843
+    volatile.eth0.hwaddr: 10:66:6a:47:bb:a4
+    volatile.idmap.base: "0"
+    volatile.idmap.current: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.idmap.next: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.last_state.idmap: '[]'
+    volatile.last_state.power: RUNNING
+    volatile.uuid: 92d199be-c97a-4684-ad88-0e2bc6f94c63
+    volatile.uuid.generation: 92d199be-c97a-4684-ad88-0e2bc6f94c63
+  devices:
+    eth0:
+      ipv4.address: 10.10.0.50
+      name: eth0
+      network: lab-br0
+      type: nic
+  ephemeral: false
+  profiles:
+    - lab
+  stateful: false
+  description: ""
+  created_at: 2026-05-21T20:42:40.084048152Z
+  expanded_config:
+    image.architecture: amd64
+    image.description: Ubuntu noble amd64 (20260521_07:42)
+    image.os: Ubuntu
+    image.release: noble
+    image.requirements.cgroup: v2
+    image.serial: "20260521_07:42"
+    image.type: squashfs
+    image.variant: cloud
+    limits.cpu: "2"
+    limits.memory: 2GiB
+    volatile.base_image: 3874d2042c624746407c6e8f2c3f1d2e1189a4f4658f9799ec6903d3a69468f6
+    volatile.cloud-init.instance-id: da02c520-4692-456c-9d1b-aca268c0e6aa
+    volatile.eth0.host_name: veth11b4a843
+    volatile.eth0.hwaddr: 10:66:6a:47:bb:a4
+    volatile.idmap.base: "0"
+    volatile.idmap.current: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.idmap.next: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.last_state.idmap: '[]'
+    volatile.last_state.power: RUNNING
+    volatile.uuid: 92d199be-c97a-4684-ad88-0e2bc6f94c63
+    volatile.uuid.generation: 92d199be-c97a-4684-ad88-0e2bc6f94c63
+  expanded_devices:
+    eth0:
+      ipv4.address: 10.10.0.50
+      name: eth0
+      network: lab-br0
+      type: nic
+    root:
+      path: /
+      pool: default
+      size: 4GiB
+      type: disk
+  name: monitoring
+  status: Running
+  status_code: 103
+  last_used_at: 2026-05-21T20:46:32.669695068Z
+  location: none
+  type: container
+  project: default
+  backups: []
+  state:
+    status: Running
+    status_code: 103
+    disk:
+      root:
+        usage: 75812864
+        total: 4294967296
+    memory:
+      usage: 130387968
+      usage_peak: 0
+      total: 2147483648
+      swap_usage: 0
+      swap_usage_peak: 0
+    network:
+      eth0:
+        addresses:
+          - family: inet
+            address: 10.10.0.50
+            netmask: "24"
+            scope: global
+          - family: inet6
+            address: fd42:fe56:6aac:127f:1266:6aff:fe47:bba4
+            netmask: "64"
+            scope: global
+          - family: inet6
+            address: fe80::1266:6aff:fe47:bba4
+            netmask: "64"
+            scope: link
+        counters:
+          bytes_received: 285189
+          bytes_sent: 134353
+          packets_received: 1465
+          packets_sent: 1249
+          errors_received: 0
+          errors_sent: 0
+          packets_dropped_outbound: 0
+          packets_dropped_inbound: 0
+        hwaddr: 10:66:6a:47:bb:a4
+        host_name: veth11b4a843
+        mtu: 1500
+        state: up
+        type: broadcast
+      lo:
+        addresses:
+          - family: inet
+            address: 127.0.0.1
+            netmask: "8"
+            scope: local
+          - family: inet6
+            address: ::1
+            netmask: "128"
+            scope: local
+        counters:
+          bytes_received: 36882
+          bytes_sent: 36882
+          packets_received: 478
+          packets_sent: 478
+          errors_received: 0
+          errors_sent: 0
+          packets_dropped_outbound: 0
+          packets_dropped_inbound: 0
+        hwaddr: ""
+        host_name: ""
+        mtu: 65536
+        state: up
+        type: loopback
+    pid: 29782
+    processes: 14
+    cpu:
+      usage: 10001082000
+      allocated_time: 2000000000
+    started_at: 2026-05-21T20:46:32.678061687Z
+    os_info: null
+  snapshots: []
+- architecture: x86_64
+  config:
+    image.architecture: amd64
+    image.description: Ubuntu noble amd64 (20260521_07:42)
+    image.os: Ubuntu
+    image.release: noble
+    image.requirements.cgroup: v2
+    image.serial: "20260521_07:42"
+    image.type: squashfs
+    image.variant: cloud
+    limits.cpu: "2"
+    limits.memory: 2GiB
+    volatile.base_image: 3874d2042c624746407c6e8f2c3f1d2e1189a4f4658f9799ec6903d3a69468f6
+    volatile.cloud-init.instance-id: d9923acd-46ce-47a3-8d26-dba90e6866dc
+    volatile.eth0.host_name: vetha1358fcc
+    volatile.eth0.hwaddr: 10:66:6a:2f:1a:e2
+    volatile.idmap.base: "0"
+    volatile.idmap.current: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.idmap.next: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.last_state.idmap: '[]'
+    volatile.last_state.power: RUNNING
+    volatile.uuid: 809ed009-eab5-4eef-b8e7-ead18a1c7ec7
+    volatile.uuid.generation: 809ed009-eab5-4eef-b8e7-ead18a1c7ec7
+  devices:
+    eth0:
+      ipv4.address: 10.10.0.10
+      name: eth0
+      network: lab-br0
+      type: nic
+  ephemeral: false
+  profiles:
+    - lab
+  stateful: false
+  description: ""
+  created_at: 2026-05-21T20:12:25.731375741Z
+  expanded_config:
+    image.architecture: amd64
+    image.description: Ubuntu noble amd64 (20260521_07:42)
+    image.os: Ubuntu
+    image.release: noble
+    image.requirements.cgroup: v2
+    image.serial: "20260521_07:42"
+    image.type: squashfs
+    image.variant: cloud
+    limits.cpu: "2"
+    limits.memory: 2GiB
+    volatile.base_image: 3874d2042c624746407c6e8f2c3f1d2e1189a4f4658f9799ec6903d3a69468f6
+    volatile.cloud-init.instance-id: d9923acd-46ce-47a3-8d26-dba90e6866dc
+    volatile.eth0.host_name: vetha1358fcc
+    volatile.eth0.hwaddr: 10:66:6a:2f:1a:e2
+    volatile.idmap.base: "0"
+    volatile.idmap.current: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.idmap.next: '[{"Isuid":true,"Isgid":false,"Hostid":1000000,"Nsid":0,"Maprange":1000000000},{"Isuid":false,"Isgid":true,"Hostid":1000000,"Nsid":0,"Maprange":1000000000}]'
+    volatile.last_state.idmap: '[]'
+    volatile.last_state.power: RUNNING
+    volatile.uuid: 809ed009-eab5-4eef-b8e7-ead18a1c7ec7
+    volatile.uuid.generation: 809ed009-eab5-4eef-b8e7-ead18a1c7ec7
+  expanded_devices:
+    eth0:
+      ipv4.address: 10.10.0.10
+      name: eth0
+      network: lab-br0
+      type: nic
+    root:
+      path: /
+      pool: default
+      size: 4GiB
+      type: disk
+  name: node-control
+  status: Running
+  status_code: 103
+  last_used_at: 2026-05-21T20:41:56.922025086Z
+  location: none
+  type: container
+  project: default
+  backups: []
+  state:
+    status: Running
+    status_code: 103
+    disk:
+      root:
+        usage: 114415104
+        total: 4294967296
+    memory:
+      usage: 153391104
+      usage_peak: 0
+      total: 2147483648
+      swap_usage: 0
+      swap_usage_peak: 0
+    network:
+      eth0:
+        addresses:
+          - family: inet
+            address: 10.10.0.10
+            netmask: "24"
+            scope: global
+          - family: inet6
+            address: fd42:fe56:6aac:127f:1266:6aff:fe2f:1ae2
+            netmask: "64"
+            scope: global
+          - family: inet6
+            address: fe80::1266:6aff:fe2f:1ae2
+            netmask: "64"
+            scope: link
+        counters:
+          bytes_received: 14247051
+          bytes_sent: 812475
+          packets_received: 10874
+          packets_sent: 10103
+          errors_received: 0
+          errors_sent: 0
+          packets_dropped_outbound: 0
+          packets_dropped_inbound: 0
+        hwaddr: 10:66:6a:2f:1a:e2
+        host_name: vetha1358fcc
+        mtu: 1500
+        state: up
+        type: broadcast
+      lo:
+        addresses:
+          - family: inet
+            address: 127.0.0.1
+            netmask: "8"
+            scope: local
+          - family: inet6
+            address: ::1
+            netmask: "128"
+            scope: local
+        counters:
+          bytes_received: 236510
+          bytes_sent: 236510
+          packets_received: 3046
+          packets_sent: 3046
+          errors_received: 0
+          errors_sent: 0
+          packets_dropped_outbound: 0
+          packets_dropped_inbound: 0
+        hwaddr: ""
+        host_name: ""
+        mtu: 65536
+        state: up
+        type: loopback
+    pid: 24817
+    processes: 18
+    cpu:
+      usage: 39497059000
+      allocated_time: 2000000000
+    started_at: 2026-05-21T20:41:56.935767219Z
+    os_info: null
+  snapshots: []

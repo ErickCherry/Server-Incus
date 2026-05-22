@@ -1,0 +1,4 @@
+# Copiar a inventory.ini tras: ./scripts/gen-inventory.sh
+# O generar con: LAB_SSH_PASS=tu_password ./scripts/gen-inventory.sh
+[all]
+app-api ansible_host=10.10.0.20 lab_ip=10.10.0.20 lab_role=api ansible_user=ubuntu

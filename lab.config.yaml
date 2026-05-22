@@ -1,0 +1,83 @@
+# Fuente única de verdad del laboratorio Incus.
+# Para añadir un nodo: agrega una entrada en `nodes` y ejecuta: ./lab-deploy.sh apply
+# Para quitar un nodo:  pon enabled: false o elimina la entrada, luego: ./lab-deploy.sh remove <nombre>
+# Para redimensionar: ajusta cpu/memory aquí y ejecuta: ./lab-deploy.sh apply
+
+lab:
+  name: reservas-incus
+  storage_pool: default
+  profile: lab
+  image_alias: ubuntu2404
+  image_remote: ubuntu/24.04/cloud
+  seed_node: node-control   # primer contenedor desde imagen; el resto se clona de aquí
+
+  network:
+    bridge: lab-br0
+    gateway: 10.10.0.1
+    subnet_cidr: 24
+    nat: true
+    dhcp_dynamic: 10.10.0.200-10.10.0.254
+    ovn_ranges: 10.10.0.2-10.10.0.199
+    ovn_network: lab-ovn
+    ovn_parent: lab-br0
+
+# IP: define `ip` explícita o deja que se calcule con ip_base + ip_offset
+nodes:
+  - name: node-control
+    role: control
+    ip: 10.10.0.10
+    cpu: 2
+    memory: 2GiB
+    disk: 8GiB
+    enabled: true
+
+  - name: app-api
+    role: api
+    ip: 10.10.0.20
+    cpu: 1
+    memory: 1GiB
+    enabled: true
+
+  - name: app-core
+    role: core
+    ip: 10.10.0.30
+    cpu: 1
+    memory: 1GiB
+    enabled: true
+
+  - name: db-postgres
+    role: database
+    ip: 10.10.0.40
+    cpu: 2
+    memory: 2GiB
+    enabled: true
+    disks:
+      - name: pgdata
+        path: /var/lib/postgresql-data
+        size: 5GiB
+
+  - name: monitoring
+    role: monitoring
+    ip: 10.10.0.50
+    cpu: 1
+    memory: 1536MiB
+    enabled: true
+
+  - name: ceph-node
+    role: storage
+    ip: 10.10.0.60
+    cpu: 2
+    memory: 2GiB
+    enabled: true
+    disks:
+      - name: cephdata
+        path: /var/lib/ceph-demo
+        size: 5GiB
+
+# Ejemplo de nodo extra (deshabilitado por defecto; activar con enabled: true):
+  - name: app-worker-1
+    role: worker
+    ip: 10.10.0.70
+    cpu: 1
+    memory: 1GiB
+    enabled: false

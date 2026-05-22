@@ -1,0 +1,12 @@
+[Unit]
+Description=Lab microservice {{ inventory_hostname }}
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/lab/app
+ExecStart=/usr/bin/python3 /opt/lab/app/app.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,25 @@
+from flask import Flask, Response
+import socket
+
+app = Flask(__name__)
+SERVICE = "{{ inventory_hostname }}"
+ROLE = "{{ lab_role | default('app') }}"
+
+@app.get("/health")
+def health():
+    return {"status": "ok", "service": SERVICE, "role": ROLE}, 200
+
+@app.get("/metrics")
+def metrics():
+    body = f"""# HELP lab_up Servicio activo
+# TYPE lab_up gauge
+lab_up{{service="{SERVICE}",role="{ROLE}"}} 1
+"""
+    return Response(body, mimetype="text/plain")
+
+@app.get("/")
+def index():
+    return f"<h1>{SERVICE}</h1><p>role={ROLE}</p>"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port={{ app_service_port }})

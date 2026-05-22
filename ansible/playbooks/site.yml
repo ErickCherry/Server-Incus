@@ -1,0 +1,56 @@
+---
+- name: Configuración común
+  hosts: all
+  tags: [common]
+  roles:
+    - common
+
+- name: PostgreSQL reservas
+  hosts: db_postgres
+  vars:
+    db_user: lab
+    db_pass: lab_secret_change_me
+    db_name: reservas
+    db_host: 10.10.0.40
+    lab_root: /home/fintek-1/incus-lab
+  tags: [database]
+  roles:
+    - postgres
+
+- name: API reservas (FastAPI)
+  hosts: app-api
+  tags: [apps, api]
+  roles:
+    - role: app_service
+      vars:
+        reservas_service: api
+
+- name: Core reservas
+  hosts: app-core
+  tags: [apps, core]
+  roles:
+    - role: app_service
+      vars:
+        reservas_service: core
+
+- name: Almacenamiento demo
+  hosts: ceph_node
+  tags: [storage]
+  roles:
+    - ceph_demo
+
+- name: Monitoreo
+  hosts: monitoring
+  tags: [monitoring]
+  roles:
+    - prometheus
+    - grafana
+
+- name: Validación
+  hosts: localhost
+  become: false
+  connection: local
+  gather_facts: false
+  tags: [validate]
+  roles:
+    - validate
