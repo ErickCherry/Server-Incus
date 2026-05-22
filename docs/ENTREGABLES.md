@@ -1,7 +1,8 @@
 # Entregables del proyecto — Guía paso a paso
 
 Laboratorio: **Reservas académicas sobre Incus**  
-Servidor: `server-fintek` — proyecto en `~/incus-lab`
+Servidor: `server-fintek` — proyecto en `~/incus-lab`  
+**Documentación completa:** [DOCUMENTACION.md](DOCUMENTACION.md) · **Repo:** https://github.com/ErickCherry/Server-Incus
 
 ---
 
