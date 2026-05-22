@@ -2,7 +2,10 @@
 # Arranca stack mínimo y despliega app de reservas académicas
 set -euo pipefail
 cd "$(dirname "$0")"
-export SUDO_PASS="${SUDO_PASS:-0101}"
+# shellcheck source=scripts/load-secrets.sh
+source "$(dirname "$0")/scripts/load-secrets.sh"
+: "${HOST_SUDO_PASS:?Defina HOST_SUDO_PASS en secrets/lab.secrets.env}"
+export SUDO_PASS="${SUDO_PASS:-$HOST_SUDO_PASS}"
 
 fix_incus_ip_if_needed() {
   local current

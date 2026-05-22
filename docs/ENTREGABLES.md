@@ -171,41 +171,20 @@ git commit -m "Entrega: app reservas académicas, OpenTofu, Ansible, monitoreo y
 
 ## Paso 8 — Subir a GitHub
 
-### Opción A — Tú creas el repo y empujas desde el servidor (recomendado)
+Repo del proyecto: **https://github.com/ErickCherry/Server-Incus**
 
-1. En https://github.com/new crea un repo vacío, por ejemplo: `incus-lab-reservas` (sin README si vas a push desde servidor).
-
-2. En el servidor:
+Para actualizar desde el servidor (recomendado: **SSH**, sin tokens en el repositorio):
 
 ```bash
 cd ~/incus-lab
-git remote add origin https://github.com/TU_USUARIO/incus-lab-reservas.git
-git push -u origin main
+git pull origin main
+# ... tus cambios ...
+git add .
+git commit -m "tu mensaje"
+git push origin main
 ```
 
-Te pedirá usuario y **Personal Access Token (PAT)** de GitHub (no la contraseña de la cuenta).
-
-Crear PAT: GitHub → Settings → Developer settings → Personal access tokens → Generate (scope: `repo`).
-
-### Opción B — Clonar en tu Mac y subir
-
-```bash
-# En el Mac
-scp -r fintek-local:~/incus-lab ~/Desktop/incus-lab
-cd ~/Desktop/incus-lab
-git init && git add . && git commit -m "Entrega inicial"
-git remote add origin https://github.com/TU_USUARIO/incus-lab-reservas.git
-git push -u origin main
-```
-
-### Opción C — Que el agente suba el repo
-
-Necesito que me proporciones (por mensaje seguro o tú ejecutas el push):
-
-1. URL del repo vacío: `https://github.com/USUARIO/REPO.git`
-2. Un **PAT** con permiso `repo` (o invitarme como colaborador y usas Opción A)
-
-**No pegues contraseñas del servidor ni tokens de Meta en el chat.**
+Configura en GitHub una **llave SSH** de despliegue (Settings → SSH keys). No guardes tokens ni contraseñas en archivos del repo.
 
 ---
 

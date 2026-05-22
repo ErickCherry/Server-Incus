@@ -2,11 +2,15 @@
 # Corrige DNS/NAT del laboratorio (UFW + netplan en nodos)
 set -euo pipefail
 LAB_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+# shellcheck source=load-secrets.sh
+source "$(dirname "$0")/load-secrets.sh"
+: "${HOST_SUDO_PASS:?Defina HOST_SUDO_PASS en secrets/lab.secrets.env}"
+SUDO_PASS="${SUDO_PASS:-$HOST_SUDO_PASS}"
 
 echo "[network] Reglas UFW para lab-br0"
-echo '0101' | sudo -S ufw route allow in on lab-br0 out on enp2s0 2>/dev/null || true
-echo '0101' | sudo -S ufw route allow in on enp2s0 out on lab-br0 2>/dev/null || true
-echo '0101' | sudo -S ip link set lab-br0 up 2>/dev/null || true
+echo "$SUDO_PASS" | sudo -S ufw route allow in on lab-br0 out on enp2s0 2>/dev/null || true
+echo "$SUDO_PASS" | sudo -S ufw route allow in on enp2s0 out on lab-br0 2>/dev/null || true
+echo "$SUDO_PASS" | sudo -S ip link set lab-br0 up 2>/dev/null || true
 
 while IFS=: read -r n ip; do
   [[ -z "$n" ]] && continue

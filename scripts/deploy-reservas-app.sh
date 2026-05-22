@@ -2,8 +2,12 @@
 # Despliega stack mínimo: app-api, app-core, db-postgres, monitoring
 set -euo pipefail
 LAB_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+# shellcheck source=load-secrets.sh
+source "$(dirname "$0")/load-secrets.sh"
 APP_DIR="${LAB_ROOT}/app"
-DB_PASS="${DB_PASS:-lab_secret_change_me}"
+: "${DB_PASS:?Defina DB_PASS en secrets/lab.secrets.env}"
+: "${HOST_SUDO_PASS:?Defina HOST_SUDO_PASS en secrets/lab.secrets.env}"
+export SUDO_PASS="${SUDO_PASS:-$HOST_SUDO_PASS}"
 REQUIRED_NODES=(app-api app-core db-postgres monitoring)
 LAB_TARGETS=(app-api app-core db-postgres monitoring)
 
@@ -31,9 +35,9 @@ ensure_nodes() {
 }
 
 ufw_lab_routes() {
-  echo "${SUDO_PASS:-0101}" | sudo -S ufw route allow in on lab-br0 out on enp2s0 2>/dev/null || true
-  echo "${SUDO_PASS:-0101}" | sudo -S ufw route allow in on enp2s0 out on lab-br0 2>/dev/null || true
-  echo "${SUDO_PASS:-0101}" | sudo -S ip link set lab-br0 up 2>/dev/null || true
+  echo "$SUDO_PASS" | sudo -S ufw route allow in on lab-br0 out on enp2s0 2>/dev/null || true
+  echo "$SUDO_PASS" | sudo -S ufw route allow in on enp2s0 out on lab-br0 2>/dev/null || true
+  echo "$SUDO_PASS" | sudo -S ip link set lab-br0 up 2>/dev/null || true
 }
 
 install_node_exporter() {

@@ -6,6 +6,19 @@ LAB_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CONFIG_FILE="${LAB_CONFIG:-${LAB_ROOT}/lab.config.yaml}"
 GENERATED_DIR="${LAB_ROOT}/generated"
 
+if [[ -f "${LAB_ROOT}/secrets/lab.secrets.env" ]]; then
+  set -a
+  # shellcheck source=/dev/null
+  source "${LAB_ROOT}/secrets/lab.secrets.env"
+  set +a
+fi
+SUDO_PASS="${SUDO_PASS:-${HOST_SUDO_PASS:-}}"
+
+lab_sudo() {
+  : "${SUDO_PASS:?Defina HOST_SUDO_PASS en secrets/lab.secrets.env}"
+  echo "$SUDO_PASS" | sudo -S "$@"
+}
+
 log()  { echo "[lab] $*"; }
 warn() { echo "[lab] WARN: $*" >&2; }
 die()  { echo "[lab] ERROR: $*" >&2; exit 1; }

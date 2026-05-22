@@ -10,7 +10,7 @@ ensure_ovn_host() {
     warn "openvswitch-switch no activo; instale: sudo apt install openvswitch-switch ovn-central ovn-host"
     return 0
   fi
-  echo '0101' | sudo -S ovs-vsctl set open_vswitch . \
+  lab_sudo ovs-vsctl set open_vswitch . \
     external_ids:ovn-remote=unix:/run/ovn/ovnsb_db.sock \
     external_ids:ovn-encap-type=geneve \
     external_ids:ovn-encap-ip=127.0.0.1 2>/dev/null || true
@@ -37,7 +37,7 @@ ensure_bridge() {
 
   incus network set "$br" ipv4.dhcp.ranges="$dhcp" 2>/dev/null || true
   incus network set "$br" ipv4.ovn.ranges="$ovn_rng" 2>/dev/null || true
-  echo '0101' | sudo -S ip link set "$br" up 2>/dev/null || true
+  lab_sudo ip link set "$br" up 2>/dev/null || true
 }
 
 ensure_ovn_network() {
