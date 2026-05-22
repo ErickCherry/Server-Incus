@@ -2,9 +2,12 @@
 # Despliegue completo del laboratorio (suficiente para demo académica)
 set -euo pipefail
 cd "$(dirname "$0")"
-export DB_PASS="${DB_PASS:-lab_secret_change_me}"
-export LAB_SSH_PASS="${LAB_SSH_PASS:-lab123}"
-export SUDO_PASS="${SUDO_PASS:-0101}"
+# shellcheck source=scripts/load-secrets.sh
+source "$(dirname "$0")/scripts/load-secrets.sh"
+: "${DB_PASS:?Define DB_PASS en secrets/lab.secrets.env}"
+: "${LAB_SSH_PASS:?Define LAB_SSH_PASS en secrets/lab.secrets.env}"
+export DB_PASS LAB_SSH_PASS
+export SUDO_PASS="${SUDO_PASS:-$HOST_SUDO_PASS}"
 
 echo "=== 1/7 Incus IP + contenedores ==="
 chmod +x scripts/fix-incus-ip.sh scripts/ovn-demo.sh scripts/smoke-test.sh start-reservas.sh

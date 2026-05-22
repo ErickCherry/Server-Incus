@@ -14,6 +14,7 @@ Repositorio del proyecto **Incus + OpenTofu + Ansible + FastAPI + Prometheus/Gra
 | [docs/ESTRUCTURA-REPOSITORIO.md](docs/ESTRUCTURA-REPOSITORIO.md) | Árbol de carpetas y archivos clave |
 | [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md) | Diagramas Mermaid y topología de red |
 | [docs/ACCESO-DESDE-MAC.md](docs/ACCESO-DESDE-MAC.md) | Túnel SSH para abrir API/Grafana desde tu Mac |
+| [docs/SEGURIDAD-Y-RED.md](docs/SEGURIDAD-Y-RED.md) | IP estática, router, firewall, secretos, recuperación |
 | [README-RESERVAS.md](README-RESERVAS.md) | API de reservas, endpoints y credenciales demo |
 | [docs/ENTREGABLES.md](docs/ENTREGABLES.md) | Checklist de entrega académica y grabación de video |
 

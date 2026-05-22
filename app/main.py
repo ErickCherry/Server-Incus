@@ -23,7 +23,7 @@ from pydantic import BaseModel, Field
 DB_HOST = os.getenv("DB_HOST", "10.10.0.40")
 DB_NAME = os.getenv("DB_NAME", "reservas")
 DB_USER = os.getenv("DB_USER", "lab")
-DB_PASS = os.getenv("DB_PASS", "lab_secret_change_me")
+DB_PASS = os.getenv("DB_PASS", "")
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger("reservas-api")
@@ -103,7 +103,7 @@ class ReservationUpdate(BaseModel):
 def verify_password(plain: str, stored: str) -> bool:
     if stored.startswith("plain:"):
         return plain == stored[6:]
-    return plain == "lab123" and stored.endswith("placeholder")
+    return False
 
 
 def auth_user(creds: Optional[HTTPAuthorizationCredentials] = Depends(security)) -> int:

@@ -44,7 +44,7 @@
       GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO {{ db_user }};
       GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO {{ db_user }};
       ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO {{ db_user }};
-      UPDATE users SET password_hash='plain:lab123' WHERE email='admin@lab.edu';"
+      UPDATE users SET password_hash='plain:{{ app_admin_pass | default(lookup('env','APP_ADMIN_PASS')) }}' WHERE email='{{ app_admin_email | default('admin@lab.edu') }}';"
   args: { executable: /bin/bash }
 
 - name: PostgreSQL activo

@@ -24,10 +24,12 @@ cd ~/incus-lab
 - **Prometheus:** http://10.10.0.50:9090
 - **Grafana:** http://10.10.0.50:3000 (admin / admin)
 
-## Credenciales demo
+## Credenciales
 
-- Email: `admin@lab.edu`
-- Password: `lab123`
+Definidas en `secrets/lab.secrets.env` en el servidor (no están en GitHub):
+
+- `APP_ADMIN_EMAIL` / `APP_ADMIN_PASS` — login API
+- Ver `secrets/lab.secrets.env.example` para la plantilla
 
 ## Prueba rápida
 

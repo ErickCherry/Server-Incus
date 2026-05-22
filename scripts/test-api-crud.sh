@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 # Prueba E2E: auth, CRUD recursos, CRUD reservas, eventos
 set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+# shellcheck source=load-secrets.sh
+source "$SCRIPT_DIR/load-secrets.sh"
+: "${APP_ADMIN_EMAIL:?}" "${APP_ADMIN_PASS:?}"
 API="${API_URL:-http://10.10.0.20:8080}"
 
 json() { python3 -c "import sys,json; print(json.load(sys.stdin)['$1'])"; }
 
 echo "=== 1. Login ==="
 LOGIN=$(curl -sf -X POST "$API/auth/login" -H "Content-Type: application/json" \
-  -d '{"email":"admin@lab.edu","password":"lab123"}')
+  -d "{\"email\":\"${APP_ADMIN_EMAIL}\",\"password\":\"${APP_ADMIN_PASS}\"}")
 TOKEN=$(echo "$LOGIN" | json access_token)
 echo "user: $(echo "$LOGIN" | json email)"
 

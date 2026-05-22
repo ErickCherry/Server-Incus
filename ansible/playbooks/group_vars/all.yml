@@ -5,7 +5,7 @@ lab_subnet: "10.10.0.0/24"
 db_host: "10.10.0.40"
 db_name: reservas
 db_user: lab
-db_pass: "lab_secret_change_me"
+db_pass: "{{ lookup('env', 'DB_PASS') | default('CHANGE_ME', true) }}"
 prometheus_port: 9090
 grafana_port: 3000
 node_exporter_port: 9100

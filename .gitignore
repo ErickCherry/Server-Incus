@@ -1,6 +1,9 @@
 # Secretos y estado local
 .env
 *.env.local
+secrets/lab.secrets.env
+secrets/*.env
+!secrets/*.example
 **/terraform.tfstate
 **/terraform.tfstate.backup
 .tofu/

@@ -9,7 +9,8 @@
   hosts: db_postgres
   vars:
     db_user: lab
-    db_pass: lab_secret_change_me
+    db_pass: "{{ lookup('env', 'DB_PASS') }}"
+    app_admin_pass: "{{ lookup('env', 'APP_ADMIN_PASS') }}"
     db_name: reservas
     db_host: 10.10.0.40
     lab_root: /home/fintek-1/incus-lab
